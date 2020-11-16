@@ -7,7 +7,14 @@ Rails.application.routes.draw do
     resources :rentals, only: [:new, :create]
   end
 
-  resources :rentals, only: [:show, :index, :edit, :update ]
+  resources :rentals, only: [:index, :edit, :update] do
+    member do
+      patch :deny
+      patch :approve
+    end
+  end
   resource :profile, only: [:show] # GET /profile profiles#show
+
+
 
 end
