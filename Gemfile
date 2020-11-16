@@ -31,6 +31,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
 gem 'simple_form'
+# Adding Devise for authentication
+gem 'devise'
 
 group :development, :test do
   gem 'pry-byebug'
