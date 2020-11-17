@@ -7,6 +7,6 @@ before_action(:set_profile, only: [:show])
   private
 
   def set_profile
-    @profile = Profile.find(params[:id])
+    @profile = current_user
   end
 end
