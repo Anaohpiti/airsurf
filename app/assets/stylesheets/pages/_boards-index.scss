@@ -14,6 +14,10 @@
   justify-self: center;
 }
 
+.card-text {
+  word-wrap: break-word;
+}
+
 .interline-card-content {
   line-height: 0;
 }

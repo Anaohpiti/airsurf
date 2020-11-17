@@ -4,10 +4,11 @@
     <div class="content-boards">
       <% @boards.each do |board| %>
         <div class="card card-boards my-4" style="width: 20rem;">
-          <%= cl_image_tag board.photo.key, height: 250, crop: :thumb, class: "card-img-top" %>
+          <%= cl_image_tag board.photo.key, height: 350, crop: :thumb, class: "card-img-top" %>
           <div class="card-body text-center d-flex flex-column">
             <h5 class="card-title"><%= board.title %></h5>
             <div class="mt-auto interline-card-content">
+            <p class="card-text"></p>
             <p class="card-text"><%= board.description %></p>
             <p class="card-text"><i class="fas fa-map-marker-alt"></i> <%= board.location %></p>
             <p class="card-text"><%= (board.price_per_day)/100 %>€ / day</p>
