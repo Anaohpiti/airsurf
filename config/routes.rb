@@ -7,7 +7,8 @@ Rails.application.routes.draw do
     resources :rentals, only: [:new, :create]
   end
 
-  resources :rentals, only: [:index, :edit, :update] do
+#####################################yellow EDIT and UPDATE might not be required
+  resources :rentals, only: [:index] do
     member do
       patch :deny
       patch :approve

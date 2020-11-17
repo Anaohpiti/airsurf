@@ -2,6 +2,7 @@ class RentalsController < ApplicationController
   # red !! routes and model need to be updated to reflect these actions
   before_action(:set_rental, only: [:show, :approve, :deny])
 
+
   def index
     @rentals = Rental.all
   end
