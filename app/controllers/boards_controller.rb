@@ -13,9 +13,13 @@ def new
 end
 
 def create
-  board = Board.create(board_params)
-
-  redirect_to board_path(board)
+  @board = Board.new(board_params)
+  
+  if @board.save
+    redirect_to board_path(board), notice: "Board added !"
+  else
+    render :new
+  end
 end
 
 private
