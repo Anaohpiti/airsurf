@@ -1,14 +1,23 @@
 <div class="container">
   <h1>List of all boards</h1>
-  <% if @boards %>
-    <% @boards.each do |board| %>
-      <div class="card card-boards">
-        <%= board.title %>
-
-        <%= board.description %>
+  <div class="list-of-cards">
+    <div class="content">
+      <div class="card card-boards" style="width: 18rem;">
+        <img src="https://picsum.photos/80" class="card-img-top" alt="surf board">
+        <div class="card-body">
+          <h5 class="card-title">Title</h5>
+          <p class="card-text">Description</p>
+          <a href="#" class="btn btn-primary">Rent it !</a>
+        </div>
       </div>
-    <% end %>
-    <div class="list-of-cards">
+      <div class="card card-boards" style="width: 18rem;">
+        <img src="https://picsum.photos/80" class="card-img-top" alt="surf board">
+        <div class="card-body">
+          <h5 class="card-title">Title</h5>
+          <p class="card-text">Description</p>
+          <a href="#" class="btn btn-primary">Rent it !</a>
+        </div>
+      </div>
       <div class="card card-boards" style="width: 18rem;">
         <img src="https://picsum.photos/80" class="card-img-top" alt="surf board">
         <div class="card-body">
@@ -18,12 +27,15 @@
         </div>
       </div>
     </div>
+  </div>
 
 
-
-  <% else %>
-    <div class="card card-boards">
-      <div class="card-title">No seeds</div>
-    </div>
-  <% end %>
+  <!-- <% if false %>
+    <% @boards.each do |board| %>
+      <div class="card card-boards">
+        <%= board.title %>
+        <%= board.description %>
+      </div>
+    <% end %>
+  <% end %> -->
 </div>

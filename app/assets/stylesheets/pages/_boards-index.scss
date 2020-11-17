@@ -1,9 +1,15 @@
-.card-boards {
-  border: 1px solid $gray;
-
+.content {
+  background-color: $light-gray;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 10px;
 }
 
 .list-of-cards {
-  background-color: $light-gray;
-  padding: 10px;
+  margin: 0 auto;
+}
+
+.card-boards {
+  justify-self: center;
 }
