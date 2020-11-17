@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
 
 #####################################yellow EDIT and UPDATE might not be required
-  resources :rentals, only: [:index, :edit, :update] do
+  resources :rentals, only: [:index] do
     member do
       patch :deny
       patch :approve
