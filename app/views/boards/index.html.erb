@@ -1,41 +1,22 @@
 <div class="container">
-  <h1 class="text-white my-2">List of all boards</h1>
+  <h1 class="text-white my-2 ml-2">Boards available</h1>
   <div class="list-of-cards">
-    <div class="content">
-      <div class="card card-boards my-4" style="width: 18rem;">
-        <img src="https://picsum.photos/80" class="card-img-top" alt="surf board">
-        <div class="card-body">
-          <h5 class="card-title">Title</h5>
-          <p class="card-text">Description</p>
-          <a href="#" class="btn btn-primary">Rent it !</a>
+    <div class="content-boards">
+      <% @boards.each do |board| %>
+        <div class="card card-boards my-4" style="width: 20rem;">
+          <%= cl_image_tag board.photo.key, height: 350, crop: :thumb, class: "card-img-top" %>
+          <div class="card-body text-center d-flex flex-column">
+            <h5 class="card-title"><%= board.title %></h5>
+            <div class="mt-auto interline-card-content">
+            <p class="card-text"></p>
+            <p class="card-text"><%= board.description %></p>
+            <p class="card-text"><i class="fas fa-map-marker-alt"></i> <%= board.location %></p>
+            <p class="card-text"><%= (board.price_per_day)/100 %>€ / day</p>
+              <%= link_to "Rent it!", board_path(board), class:"btn btn-primary" %>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="card card-boards" style="width: 18rem;">
-        <img src="https://picsum.photos/80" class="card-img-top" alt="surf board">
-        <div class="card-body">
-          <h5 class="card-title">Title</h5>
-          <p class="card-text">Description</p>
-          <a href="#" class="btn btn-primary">Rent it !</a>
-        </div>
-      </div>
-      <div class="card card-boards" style="width: 18rem;">
-        <img src="https://picsum.photos/80" class="card-img-top" alt="surf board">
-        <div class="card-body">
-          <h5 class="card-title">Title</h5>
-          <p class="card-text">Description</p>
-          <a href="#" class="btn btn-primary">Rent it !</a>
-        </div>
-      </div>
+      <% end %>
     </div>
   </div>
-
-
-  <!-- <% if false %>
-    <% @boards.each do |board| %>
-      <div class="card card-boards">
-        <%= board.title %>
-        <%= board.description %>
-      </div>
-    <% end %>
-  <% end %> -->
 </div>
