@@ -3,10 +3,11 @@
   background:linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(https://images.pexels.com/photos/3993186/pexels-photo-3993186.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260);
   background-size: cover;
   background-position: left;
-  height: 97vh;
+  height: 80vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 25px;
 }
 
 .home-banner {
@@ -34,4 +35,11 @@
   background-color: transparent;
   border-bottom: 2px solid lightgrey;
   font-size: 35px;
+}
+
+.footer {
+  position: sticky;
+  height: 100px;
+  bottom: 0;
+  width: 100%;
 }
