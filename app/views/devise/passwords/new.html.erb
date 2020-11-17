@@ -1,18 +1,24 @@
-<h2>Forgot your password?</h2>
+<h2 class="py-3 text-center">Forgot your password?</h2>
 
-<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= f.error_notification %>
+<form class="d-flex justify-content-center form-inline">
+  <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+    <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
-  </div>
+    <div class="form-inputs m-2">
+      <%= f.input :email,
+                  required: true,
+                  autofocus: true,
+                  placeholder: "Type your email",
+                  input_html: { autocomplete: "email",
+                  class:"m-4" } %>
+    </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Send me reset password instructions" %>
-  </div>
-<% end %>
+    <div class="form-actions ">
+      <%= f.button :submit, "Send me reset password instructions", class:"btn btn-primary m-2"%>
+    </div>
+  <% end %>
+</form>
 
-<%= render "devise/shared/links" %>
+<div class="m-3 text-center">
+  <%= render "devise/shared/links"%>
+</div>
