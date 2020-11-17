@@ -1,2 +1,16 @@
-<h1>Welcome to Airsurf !</h1>
-<p>If you're a surfer looking for boards, this app is for you 🤙</p>
+<div class="banner home-banner">
+  <div class="content text-center">
+    <h1>Welcome to Airsurf !</h1>
+    <p>If you're a surfer looking for boards, this app is for you 🤙</p>
+    <!--<% if false %>
+      <%= simple_form_for @boards do |f| %>
+        <%= f.input :name %>
+        <%= f.submit "Find your board", class:"btn btn-primary" %>
+      <% end %>
+    <% end %> -->
+    <div class="form-banner">
+      <input type="text" class="text-input" placeholder="Where do you wanna go surfing ?">
+      <button class="btn btn-light">Find your board</button>
+    </div>
+  </div>
+</div>
