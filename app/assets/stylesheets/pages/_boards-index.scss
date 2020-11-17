@@ -1,9 +1,9 @@
-.content {
+.content-boards {
   background-color: $light-gray;
-  padding: 10px;
+  padding: 5px 20px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  column-gap: 10px;
+  column-gap: 15px;
 }
 
 .list-of-cards {
