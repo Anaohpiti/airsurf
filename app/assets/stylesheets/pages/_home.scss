@@ -4,14 +4,14 @@
   background-size: cover;
   background-position: left;
   height: 97vh;
-}
-
-.home-banner {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.home-banner {
+
   width: 100%;
-  margin-top: 180px;
   h1 {
     color: white;
     font-size: 80px;
