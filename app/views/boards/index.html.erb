@@ -1,0 +1,10 @@
+<div class="container">
+  <h1>List of all boards</h1>
+  <% @boards.each do |board| %>
+    <div class="card card-boards">
+      <%= board.title %>
+      test
+      <%= board.description %>
+    </div>
+  <% end %>
+</div>
