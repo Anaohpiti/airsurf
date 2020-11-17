@@ -3,7 +3,7 @@ class CreateBoards < ActiveRecord::Migration[6.0]
     create_table :boards do |t|
       t.text :description
       t.string :location
-      t.float :height
+      t.integer :height
       t.float :volume
       t.string :brand
       t.string :condition
