@@ -18,7 +18,7 @@ class RentalsController < ApplicationController
     # yellow redirect to rentals index
 
     if @rental.save!
-      redirect_to board_path(@board)
+      redirect_to profile_path(current_user)
     else
       render :new
     end
