@@ -1,7 +1,7 @@
-<h2 class="py-3 text-center">Forgot your password?</h2>
+<h2 class="py-3 text-center text-white mt-5">Forgot your password?</h2>
 
-<form class="d-flex justify-content-center form-inline">
   <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+  <div class="d-flex justify-content-center form-inline text-white">
     <%= f.error_notification %>
 
     <div class="form-inputs m-2">
@@ -14,7 +14,7 @@
     </div>
 
     <div class="form-actions ">
-      <%= f.button :submit, "Send me reset password instructions", class:"btn btn-primary m-2"%>
+      <%= f.button :submit, "Send me reset password instructions", class:"btn btn-outline-light m-2"%>
     </div>
   <% end %>
 </form>
