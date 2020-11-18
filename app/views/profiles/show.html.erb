@@ -10,10 +10,9 @@
     <div class="">
         <%= cl_image_tag(@profile.photo.key, class: "profile-image ") %>
     </div>
-
   </div>
 
-<h2 class="text-white mt-3 ml-0 mb-0"><%= @profile.name.capitalize %>'s Boards:</h2>
+  <h2 class="text-white mt-3 ml-0 mb-0"><%= @profile.name.capitalize %>'s Boards:</h2>
   <div class="container bg-light px-3 py-1 ">
     <% @profile.boards.each do |board| %>
     <div class="card my-3 p-2">
@@ -30,8 +29,7 @@
       <% end %>
   </div>
 
-
-<h2 class="text-white mt-3 ml-0 mb-0"><%= @profile.name.capitalize %>'s Rental History:</h2>
+  <h2 class="text-white mt-3 ml-0 mb-0"><%= @profile.name.capitalize %>'s Rental History:</h2>
   <div class="container bg-light px-3 py-1 ">
     <% @profile.rentals.each do |rental| %>
     <div class="card my-3 p-2">
@@ -50,4 +48,6 @@
     </div>
       <% end %>
   </div>
+  </div>
+
 </div>
