@@ -1,28 +1,55 @@
 
 
-<div class="container d-flex align-items-center">
+<div class="container bg-light rounded mt-5">
   <div class="row">
-    <div class="col-4 m-2">
+    <div class="col text-center m-2" >
       <%= cl_image_tag @board.photo.key, alt: "Picture of the board", height:400, class:"shadow-sm m-2 p-3 rounded" %>
-      </div>
     </div>
 
-    <div class="col-8 text-center text-white m-2">
+    <div class="col text-center m-2">
       <h1><%= @board.title %></h1>
       <div>
-        <ul class="list-unstyled mt-3">
-          <li><i class="fas fa-arrows-alt-v"></i> <%= @board.height%12 %> ft (<%= @board.volume.to_i %> l)</li>
-          <li><i class="fas fa-map-marker-alt"></i> <%= @board.location %></li>
-          <li><%= @board.condition %></li>
-          <li><i class="fas fa-euro-sign"></i> <%= @board.price_per_day/100 %> / day</li>
-          <%= link_to "Rent me", "", class:"btn btn-lg btn-danger mt-4" %>
-        </ul>
-          <%= link_to ">> Back to Boards", boards_path, class:"btn btn-outline-light mt-4" %>
+        <table class="table">
+          <thead class="bg-danger text-white">
+            <tr>
+              <th scope="col"><%=cl_image_tag current_user.photo.key, class: "avatar"%></th>
+              <th scope="col" class="align-middle">Check <%= @board.user.name.capitalize %>'s board</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"><i class="fas fa-arrows-alt-v"></i></th>
+              <td><%= @board.height%12 %> ft (<%= @board.volume.to_i/100 %> l)</td>
+            </tr>
+            <tr>
+              <th scope="row"><i class="fas fa-map-marker-alt"></th>
+              <td><%= @board.location %></td>
+            </tr>
+            <tr>
+              <th scope="row"><i class="far fa-heart"></i></th>
+              <td><%= @board.condition %></td>
+            </tr>
+            <tr>
+              <th scope="row">Brand</th>
+              <td><%=@board.brand%></td>
+            </tr>
+            <tr>
+              <th scope="row"><i class="fas fa-euro-sign"></th>
+              <td><%= @board.price_per_day/100 %> / day</td>
+            </tr>
+          </tbody>
+        </table>
+
       </div>
     </div>
   </div>
-</div>
 
-
-<div>
+  <div class="row">
+    <div class="col mt-2 text-center">
+        <%= link_to ">> Back to Boards", boards_path, class:"btn btn-lg btn-outline-danger" %>
+    </div>
+    <div class="col m-2 text-center">
+      <%= link_to "Rent it!", "", class:"btn btn-lg btn-danger justify-content-self rounded" %>
+    </div>
+  </div>
 </div>
