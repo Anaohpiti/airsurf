@@ -1,0 +1,12 @@
+.profile-image {
+  height: 150px;
+  width: auto;
+  border: 2px solid $light-gray;
+}
+
+.board-image {
+  object-fit: contain;
+  height: 80px;
+  width: auto;
+  border-radius: 4px;
+}

@@ -1,0 +1,53 @@
+
+<div class="container">
+  <h2 class="text-white mt-3 ml-0 mb-0"><%= @profile.name.capitalize %>'s Profile:</h2>
+  <div class="container d-flex bg-light p-2 justify-content-between">
+    <div>
+      <p>Name: <%= @profile.name.capitalize %></p>
+      <p>Email: <%= @profile.email %></p>
+      <p>Password: ******** </p>
+    </div>
+    <div class="">
+        <%= cl_image_tag(@profile.photo.key, class: "profile-image ") %>
+    </div>
+
+  </div>
+    
+<h2 class="text-white mt-3 ml-0 mb-0"><%= @profile.name.capitalize %>'s Boards:</h2>
+  <div class="container bg-light px-3 py-1 ">
+    <% @profile.boards.each do |board| %>
+    <div class="card my-3 p-2">
+      <%=  link_to boards_path(board), class: "text-decoration-none text-dark" do %>
+      <div class="card-body p-0 d-flex justify-content-between ">
+      <div>
+        <h5 class="font-weight-bold"> <%= board.title%></h5>
+        <p> <%= board.description%></p>
+      </div>
+        <%= cl_image_tag(board.photo.key, class: "board-image") %>
+      </div>
+      <% end %>
+    </div>
+      <% end %>
+  </div>
+
+
+<h2 class="text-white mt-3 ml-0 mb-0"><%= @profile.name.capitalize %>'s Rental History:</h2>
+  <div class="container bg-light px-3 py-1 ">
+    <% @profile.rentals.each do |rental| %>
+    <div class="card my-3 p-2">
+      <div class="card-body p-0 d-flex align-items-center">
+        <div class="text-center pr-3 border-right">
+          <h5 class="font-italic">Status</h5>
+          <%= link_to rental.status, root_path, class: "btn btn-warning py-3" %>
+        </div>
+        <div class="ml-3">
+            <p class="m-1"> Date range: <%= rental.start_date%> - <%= rental.start_date%></p>
+            <p class="m-1"> Total Price: <%= rental.total_price%></p>
+            <p class="m-1">Board: <%= rental.board.title %></p>
+        </div>
+        <%= cl_image_tag(rental.board.photo.key, class: "board-image ml-auto") %>
+      </div>
+    </div>
+      <% end %>
+  </div>
+</div>
