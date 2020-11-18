@@ -2,19 +2,19 @@
 
 <div class="container d-flex align-items-center">
   <div class="row">
-    <div class="col-4">
-      <%= cl_image_tag @board.photo.key, alt: "Picture of the board", height:400, class:"shadow-sm p-3 rounded" %>
+    <div class="col-4 m-2">
+      <%= cl_image_tag @board.photo.key, alt: "Picture of the board", height:400, class:"shadow-sm m-2 p-3 rounded" %>
       </div>
     </div>
 
-    <div class="col-8 text-center text-white">
+    <div class="col-8 text-center text-white m-2">
       <h1><%= @board.title %></h1>
       <div>
         <ul class="list-unstyled mt-3">
-          <li><i class="fas fa-arrows-alt-v"></i> <%= @board.height.to_i %> ft (<%= @board.volume.to_i %> l)</li>
+          <li><i class="fas fa-arrows-alt-v"></i> <%= @board.height%12 %> ft (<%= @board.volume.to_i %> l)</li>
           <li><i class="fas fa-map-marker-alt"></i> <%= @board.location %></li>
           <li><%= @board.condition %></li>
-          <li><i class="fas fa-euro-sign"></i> <%= @board.price_per_day %> / day</li>
+          <li><i class="fas fa-euro-sign"></i> <%= @board.price_per_day/100 %> / day</li>
           <%= link_to "Rent me", "", class:"btn btn-lg btn-danger mt-4" %>
         </ul>
           <%= link_to ">> Back to Boards", boards_path, class:"btn btn-outline-light mt-4" %>
