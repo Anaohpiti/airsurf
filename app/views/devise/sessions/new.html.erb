@@ -1,26 +1,26 @@
-<h2 class="pt-3 text-center">Log in</h2>
+<h2 class="pt-3 text-center text-white mt-5">Welcome !</h2>
 
-<form class="d-flex justify-content-center">
-  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="form-group col-6 p-3">
-      <div class="form-inputs">
-        <%= f.input :email,
-                    required: false,
-                    autofocus: true,
-                    input_html: { autocomplete: "email" } %>
-        <%= f.input :password,
-                    required: false,
-                    input_html: { autocomplete: "current-password" } %>
-        <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-      </div>
-
-      <div class="form-actions d-flex justify-content-center">
-        <%= f.button :submit, "Log in", class:"btn btn-lg btn-primary mt-2" %>
-      </div>
+<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<div class="d-flex justify-content-center text-white">
+  <div class="form-group col-6 p-3">
+    <div class="form-inputs">
+      <%= f.input :email,
+                  required: false,
+                  autofocus: true,
+                  input_html: { autocomplete: "email" } %>
+      <%= f.input :password,
+                  required: false,
+                  input_html: { autocomplete: "current-password" } %>
+      <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
     </div>
-  <% end %>
-</form>
 
-<div class="m-3 text-center">
+    <div class="form-actions d-flex justify-content-center">
+      <%= f.button :submit, "Log in", class:"btn btn-lg btn-outline-light mt-2" %>
+    </div>
+  </div>
+<% end %>
+</div>
+
+<div class="m-3 text-center" id="form-link-white">
   <%= render "devise/shared/links"%>
 </div>
