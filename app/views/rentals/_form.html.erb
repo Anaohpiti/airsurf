@@ -1,0 +1,8 @@
+<%= simple_form_for [ @board, @rental ] do |f| %>
+
+  <%= f.input :start_date, as: :string, input_html: {type: :date} %>
+  <%= f.input :end_date, as: :string, input_html: {type: :date} %>
+  <%= f.submit "book" %>
+<% end %>
+
+   <%= link_to "back to profile", profile_path %>

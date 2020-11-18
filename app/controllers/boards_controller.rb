@@ -1,5 +1,7 @@
 class BoardsController < ApplicationController
 before_action(:set_board, only: [:show])
+  skip_before_action(:authenticate_user!, only: [ :index, :show ])
+
 
   def index
     @boards = Board.all

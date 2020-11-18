@@ -1,7 +1,7 @@
 class RentalsController < ApplicationController
   # red !! routes and model need to be updated to reflect these actions
   before_action(:set_rental, only: [:show, :approve, :deny])
-
+  before_action(:set_board, only: [:new, :create, :index])
 
   def index
     @rentals = Rental.all
@@ -12,9 +12,16 @@ class RentalsController < ApplicationController
   end
 
   def create
-    rental = Rental.create(rental_params)
+    @rental = Rental.new(rental_params)
+    @rental.board = @board
+    @rental.user = current_user
     # yellow redirect to rentals index
-    redirect_to rentals_path(rental)
+
+    if @rental.save!
+      redirect_to board_path(@board)
+    else
+      render :new
+    end
   end
 
   def deny
@@ -51,5 +58,9 @@ class RentalsController < ApplicationController
   def rental_params
     # ####################################################bl####################yellow :status not required strong params #########
     params.require(:rental).permit(:board_id, :user_id, :start_date, :end_date, :status, :total_price)
+  end
+
+  def set_board
+    @board = Board.find(params[:board_id])
   end
 end
