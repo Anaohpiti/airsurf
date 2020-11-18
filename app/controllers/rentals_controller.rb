@@ -29,6 +29,7 @@ class RentalsController < ApplicationController
   def deny
     @rental.status = "denied"
     @rental.update(rental_params)
+    @rental.board = @board
     # yellow redirect to rentals index
     redirect_to rentals_path(rental)
   end
@@ -36,6 +37,7 @@ class RentalsController < ApplicationController
   def approve
     @rental.status = "approved"
     @rental.update(rental_params)
+    @rental.board = @board
     # yellow redirect to rentals index
     redirect_to rentals_path(rental)
   end
