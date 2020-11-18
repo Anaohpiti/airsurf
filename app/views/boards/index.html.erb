@@ -5,7 +5,7 @@
       <% @boards.each do |board| %>
         <div class="card card-boards my-4" style="width: 20rem;">
           <%= cl_image_tag board.photo.key, height: 350, crop: :thumb, class: "card-img-top" %>
-          <div class="card-body text-center d-flex flex-column">
+          <div class="card-body white-card-body text-center d-flex flex-column">
             <h5 class="card-title"><%= board.title %></h5>
             <div class="mt-auto interline-card-content">
             <p class="card-text"></p>
