@@ -179,19 +179,21 @@ board10.save
 
 # CREATE RENTALS
 rental1 = Rental.new(
-  total_price: 50,
   start_date: Time.now,
-  end_date: (Time.now + 240000)
+  end_date: (Time.now + 240000),
+  total_price: 0
 )
 rental1.user = user1
 rental1.board = board2
+rental1.total_price = rental1.board.price_per_day / 100
 rental1.save
 
 rental2 = Rental.new(
-  total_price: 50,
   start_date: Time.now,
-  end_date: (Time.now + 240000)
+  end_date: (Time.now + 240000),
+  total_price: 0
 )
 rental2.user = user1
 rental2.board = board4
+rental2.total_price = rental2.board.price_per_day / 100
 rental2.save
