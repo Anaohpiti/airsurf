@@ -1,0 +1,15 @@
+<div class="container p-5">
+  <h1 class="mb-3">Add a new board to your collection</h1>
+  <%= simple_form_for @board do |f|%>
+    <%= f.input :title %>
+    <%= f.input :brand %>
+    <%= f.input :height %>
+    <%= f.input :volume %>
+    <%= f.input :condition %>
+    <%= f.input :price_per_day %>
+    <%= f.input :volume %>
+    <%= f.input :photo, as: :file %>
+    <%= f.input :description %>
+
+  <% end %>
+</div>
