@@ -1,3 +1,8 @@
+body {
+  min-height: 100vh;
+  padding-bottom: 8rem;
+}
+
 .content-boards {
   background-color: $light-gray;
   padding: 5px 20px;
@@ -6,8 +11,9 @@
   column-gap: 15px;
 }
 
+
 .list-of-cards {
-  margin: 0 auto 90px auto;
+
 }
 
 .card-boards {
@@ -20,4 +26,39 @@
 
 .interline-card-content {
   line-height: 0;
+}
+
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .content-boards {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .content-boards {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .content-boards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .content-boards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .content-boards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }

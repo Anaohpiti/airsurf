@@ -17,8 +17,10 @@ class RentalsController < ApplicationController
     @rental.user = current_user
     # yellow redirect to rentals index
 
+    duration = (@rental.end_date - @rental.start_date).to_i
+    @rental.total_price = (@rental.board.price_per_day * duration) / 100
     if @rental.save!
-      redirect_to board_path(@board)
+      redirect_to profile_path(current_user)
     else
       render :new
     end
@@ -27,6 +29,7 @@ class RentalsController < ApplicationController
   def deny
     @rental.status = "denied"
     @rental.update(rental_params)
+    @rental.board = @board
     # yellow redirect to rentals index
     redirect_to rentals_path(rental)
   end
@@ -34,6 +37,7 @@ class RentalsController < ApplicationController
   def approve
     @rental.status = "approved"
     @rental.update(rental_params)
+    @rental.board = @board
     # yellow redirect to rentals index
     redirect_to rentals_path(rental)
   end
