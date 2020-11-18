@@ -39,8 +39,8 @@
           <%= link_to rental.status, root_path, class: "btn btn-warning py-3" %>
         </div>
         <div class="ml-3">
-            <p class="m-1"> Date range: <%= rental.start_date%> - <%= rental.start_date%></p>
-            <p class="m-1"> Total Price: <%= rental.total_price%></p>
+            <p class="m-1"> Date range: <%= rental.start_date%> - <%= rental.end_date%></p>
+            <p class="m-1"> Total Price: <%= rental.total_price%> <strong>€</strong></p>
             <p class="m-1">Board: <%= rental.board.title %></p>
         </div>
         <%= cl_image_tag(rental.board.photo.key, class: "board-image ml-auto") %>
