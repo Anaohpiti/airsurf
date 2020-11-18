@@ -14,9 +14,12 @@ before_action(:set_board, only: [:show])
 
   def create
     @board = Board.new(board_params)
+    @user = current_user
+
+    @board.user = @user
 
     if @board.save
-      redirect_to board_path(board), notice: "Board added !"
+      redirect_to board_path(@board), notice: "Board added !"
     else
       render :new
     end
