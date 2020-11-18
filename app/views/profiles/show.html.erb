@@ -46,7 +46,7 @@
       <div class="card-body p-0 d-flex align-items-center">
         <div class="text-center pr-3 border-right">
           <h5 class="font-italic">Status</h5>
-          <p class ="rounded bg-warning text-white px-2 py-3"> <%= rental.status %></p>
+          <p class ="rounded bg-light text-white px-2 py-3"> <%= rental.status %></p>
         </div>
         <div class="ml-3">
             <p class="m-1"> Date range: <%= rental.start_date%> - <%= rental.start_date%></p>
@@ -70,8 +70,13 @@
         <div class="card my-3 p-2">
           <div class="card-body p-0 d-flex align-items-center">
             <div class="">
-              <%= link_to "Approve", approve_rental_path(rental), class: "btn btn-success m-2" %>
-              <%= link_to "Deny", deny_rental_path(rental), class: "btn btn-warning m-2" %>
+              <p class ="text-center"><strong>Status:</strong> <i><%= rental.status %></i></p>
+              <% if rental.status == "pending"%>
+                <div class="d-flex">
+                  <%= link_to "Approve", approve_rental_path(rental), class: "btn btn-success m-2" %>
+                  <%= link_to "Deny", deny_rental_path(rental), class: "btn btn-warning m-2" %>
+              </div>
+              <% end %>
             </div>
             <div class="text-center px-3 border-right border-left">
               <h5 class="font-weight-bold mb-2">Renter</h5>
