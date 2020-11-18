@@ -1,7 +1,7 @@
 class RentalsController < ApplicationController
   # red !! routes and model need to be updated to reflect these actions
   before_action(:set_rental, only: [:show, :approve, :deny])
-  before_action(:set_board, only: [:new, :create, :index])
+  before_action(:set_board, only: [:new, :create])
 
   def index
     @rentals = Rental.all
@@ -28,18 +28,16 @@ class RentalsController < ApplicationController
 
   def deny
     @rental.status = "denied"
-    @rental.update(rental_params)
-    @rental.board = @board
+    @rental.save
     # yellow redirect to rentals index
-    redirect_to rentals_path(rental)
+    redirect_to profile_path
   end
 
   def approve
     @rental.status = "approved"
-    @rental.update(rental_params)
-    @rental.board = @board
+    @rental.save
     # yellow redirect to rentals index
-    redirect_to rentals_path(rental)
+    redirect_to profile_path
   end
 
   # yellow i think EDIT and UPDATE not required
