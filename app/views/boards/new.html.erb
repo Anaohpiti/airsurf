@@ -1,0 +1,21 @@
+<div class="container p-5">
+  <%= link_to "< All boards", boards_path, class: "text-white" %>
+  <h1 class="my-3 text-center">Add a new board to your collection</h1>
+  <div class="d-flex justify-content-center">
+    <div class="content-new-board">
+      <%= simple_form_for @board do |f|%>
+        <%= f.input :title %>
+        <%= f.input :brand %>
+        <%= f.input :height %>
+        <%= f.input :volume %>
+        <%= f.input :condition %>
+        <%= f.input :price_per_day %>
+        <%= f.input :photo, as: :file %>
+        <%= f.input :location %>
+        <%= f.input :description %>
+
+        <%= f.submit "Create your board!", class: "mt-4 btn btn-danger" %>
+      <% end %>
+    </div>
+  </div>
+</div>
