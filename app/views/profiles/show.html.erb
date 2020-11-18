@@ -16,6 +16,7 @@
     <h2 class="text-white mb-0 "><%= @profile.name.capitalize %>'s Boards:</h2>
     <%= link_to "Add Board", new_board_path, class: "btn btn-danger mb-2" %>
   </div>
+
   <div class="container bg-light px-3 py-1 ">
    <% if @profile.boards.empty? %>
        <p class="text-muted font-italic my-0">You have no boards</p>
@@ -35,12 +36,12 @@
       <% end %>
   </div>
 
-
   <h2 class="text-white mt-3 ml-0 mb-0"><%= @profile.name.capitalize %>'s Rental History:</h2>
   <div class="container bg-light px-3 mb-3 py-1 ">
     <% if @profile.rentals.empty? %>
        <p class="text-muted font-italic my-0">You have no rental history</p>
     <% end %>
+
     <% @profile.rentals.each do |rental| %>
     <div class="card my-3 p-2">
       <div class="card-body p-0 d-flex align-items-center">
@@ -49,8 +50,8 @@
           <p class ="rounded bg-warning text-white px-2 py-3"> <%= rental.status %></p>
         </div>
         <div class="ml-3">
-            <p class="m-1"> Date range: <%= rental.start_date%> - <%= rental.start_date%></p>
-            <p class="m-1"> Total Price: <%= rental.total_price%></p>
+            <p class="m-1"> Date range: <%= rental.start_date%> - <%= rental.end_date%></p>
+            <p class="m-1"> Total Price: <%= rental.total_price%> <strong>€</strong></p>
             <p class="m-1">Board: <%= rental.board.title %></p>
         </div>
         <%= cl_image_tag(rental.board.photo.key, class: "board-image ml-auto") %>
@@ -58,7 +59,6 @@
     </div>
       <% end %>
   </div>
-
 
 <h2 class="text-white mt-3 ml-0 mb-0">People Renting from <%= @profile.name.capitalize %></h2>
   <div class="container bg-light px-3 mb-3 py-1 ">
@@ -89,5 +89,6 @@
       <% end %>
     <% end %>
   </div>
+
 </div>
 </div>
