@@ -41,9 +41,9 @@ board1 = Board.new(
   location: "Rennes",
   description: "cool board for beginners",
   title: "Soft Board 8 ft",
-  height: 98,
+  height: (8 * 12),
   volume: 33.2,
-  brand: "Lost",
+  brand: "Wavestorm",
   condition: "good",
   price_per_day: 1500
   )
@@ -54,12 +54,12 @@ board1.save
 board2 = Board.new(
     location: "St-Brieuc",
     description: "for advanced surfers",
-    title: "Performance board thruster setup",
+    title: "Performance board quad fin setup",
     height: 185,
     volume: 3555,
     brand: "Firewire",
     condition: "Almost new",
-    price_per_day: 2500
+    price_per_day: 3200
   )
 board2.photo.attach(io: File.open(Rails.root.join('db/fixtures/boards/surfboard_2.jpg')), filename: 'surfboard_2.jpg')
 board2.user = user2
@@ -165,15 +165,15 @@ board9.save
 
 board10 = Board.new(
     location: "Quiberon",
-    description: "eay for any type of day",
-    title: "Soft top 5' 0\"",
-    height: (5*12),
+    description: "Easy for any type of day",
+    title: "Soft top 4' 10\"",
+    height: (4*12 + 10),
     volume: 39.55,
     brand: "Channel Islands",
     condition: "Almost new",
     price_per_day: 3500
   )
-board10.photo.attach(io: File.open(Rails.root.join('db/fixtures/boards/surfboard_2.jpg')), filename: 'surfboard_2.jpg')
+board10.photo.attach(io: File.open(Rails.root.join('db/fixtures/boards/surfboard_10.jpg')), filename: 'surfboard_10.jpg')
 board10.user = user1
 board10.save
 
