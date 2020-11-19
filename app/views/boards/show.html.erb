@@ -10,7 +10,13 @@
         <table class="table">
           <thead class="bg-danger text-white">
             <tr>
-              <th scope="col"><%=cl_image_tag @board.user.photo.key, class: "avatar"%></th>
+              <th scope="col">
+                <% if @board.user.photo.attached? %>
+                  <%= cl_image_tag @board.user.photo.key, class: "avatar" %>
+                <% else %>
+                  <%= image_tag "default_avatar.png", class: "avatar" %>
+                <% end %>
+              </th>
               <th scope="col" class="align-middle">Check <%= @board.user.name.capitalize %>'s board</th>
             </tr>
           </thead>
