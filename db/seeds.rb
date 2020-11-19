@@ -150,7 +150,7 @@ board8.user = user1
 board8.save
 
 board9 = Board.new(
-    location: "",
+    location: "Laval",
     description: "not too shabby",
     title: "Lost board 7'6\"",
     height: (7 * 12 + 6),

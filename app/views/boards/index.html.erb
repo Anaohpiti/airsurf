@@ -1,4 +1,5 @@
-<div class="container container-index-boards rounded">
+
+<div class="container-index-boards rounded">
   <div class="d-flex justify-content-left m-3 p-3 rounded">
     <%= form_tag boards_path, method: :get, class: "d-flex align-items-center mw-60" do %>
       <div>
@@ -9,10 +10,12 @@
       </div>
     <% end %>
   </div>
+
   <h1 class="text-white padd-left marg-top">Boards available</h1>
-  <div class="content-boards rounded">
-    <% @boards.each do |board| %>
-      <div class="card card-boards my-4" style="width: 20rem;">
+  <div class="content-max-width d-flex">
+    <div class="content-boards rounded flex-grow-1">
+      <% @boards.each do |board| %>
+        <div class="card card-boards my-4" style="width: 20rem;">
         <%= cl_image_tag board.photo.key, height: 350, crop: :thumb, class: "card-img-top" %>
         <div class="card-body white-card-body text-center d-flex flex-column">
           <h3 class="card-title "><%= board.title %></h3>
@@ -24,7 +27,13 @@
             <%= link_to "Rent it!", board_path(board), class:"btn btn-primary" %>
           </div>
         </div>
-      </div>
-    <% end %>
+        </div>
+      <% end %>
+    </div>
+    <div id="map" class="ml-5 my-4"
+     style="width: 500px; height: 500px;"
+     data-markers="<%= @markers.to_json %>"
+     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
   </div>
 </div>
