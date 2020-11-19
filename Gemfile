@@ -36,6 +36,7 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 # Adding Devise for authentication
 gem 'devise'
+gem 'geocoder'
 
 group :development, :test do
   gem 'pry-byebug'
