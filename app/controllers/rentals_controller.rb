@@ -16,13 +16,21 @@ class RentalsController < ApplicationController
     @rental.board = @board
     @rental.user = current_user
     # yellow redirect to rentals index
+    # if !@rental.end_date || !@rental.start_date
+    #   render :new, notice: 'please select your dates!'
+    # else
+    if @rental.valid?
+      duration = (@rental.end_date - @rental.start_date).to_i
+      @rental.total_price = (@rental.board.price_per_day * duration) / 100
+    end
+    #   redirect_to profile_path(current_user)
 
-    duration = (@rental.end_date - @rental.start_date).to_i
-    @rental.total_price = (@rental.board.price_per_day * duration) / 100
-    if @rental.save!
+    # end
+
+    if @rental.save
       redirect_to profile_path(current_user)
     else
-      render :new
+      render "boards/show", notice: 'please select your dates!'
     end
   end
 

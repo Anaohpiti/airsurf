@@ -1,14 +1,17 @@
 <div class="container bg-light rounded mt-5">
+    <div class="col pt-6 text-center">
+        <%= link_to "<< Back to Boards", boards_path, class:"btn btn-lg btn-outline-danger" %>
+    </div>
   <div class="row">
     <div class="col text-center m-2" >
       <%= cl_image_tag @board.photo.key, alt: "Picture of the board", height:400, class:"shadow-sm m-2 p-3 rounded" %>
     </div>
 
-    <div class="col text-center m-2">
+    <div class="col text-center m-4 rounded">
       <h1><%= @board.title %></h1>
       <div>
-        <table class="table">
-          <thead class="bg-danger text-white">
+        <table class="table mt-2">
+          <thead class="bg-primary text-white">
             <tr>
               <th scope="col"><%=cl_image_tag @board.user.photo.key, class: "avatar"%></th>
               <th scope="col" class="align-middle">Check <%= @board.user.name.capitalize %>'s board</th>
@@ -16,20 +19,20 @@
           </thead>
           <tbody>
             <tr>
-              <th scope="row"><i class="fas fa-arrows-alt-v"></i></th>
-              <td><%= @board.height%12 %> ft (<%= @board.volume.to_i/100 %> l)</td>
+              <th scope="row">Brand</th>
+              <td><%=@board.brand%></td>
             </tr>
             <tr>
-              <th scope="row"><i class="fas fa-map-marker-alt"></th>
-              <td><%= @board.location %></td>
+              <th scope="row"><i class="fas fa-arrows-alt-v"></i></th>
+              <td><%= @board.height%12 %> ft (<%= @board.volume.to_i/100 %> l)</td>
             </tr>
             <tr>
               <th scope="row"><i class="far fa-heart"></i></th>
               <td><%= @board.condition %></td>
             </tr>
             <tr>
-              <th scope="row">Brand</th>
-              <td><%=@board.brand%></td>
+              <th scope="row"><i class="fas fa-map-marker-alt"></th>
+              <td><%= @board.location %></td>
             </tr>
             <tr>
               <th scope="row"><i class="fas fa-euro-sign"></th>
@@ -43,11 +46,12 @@
   </div>
 
   <div class="row">
-    <div class="col mt-2 text-center">
-        <%= link_to ">> Back to Boards", boards_path, class:"btn btn-lg btn-outline-danger" %>
-    </div>
-    <div class="col m-2 text-center">
-      <%= link_to "Rent it!", new_board_rental_path(@board), class:"btn btn-lg btn-danger justify-content-self rounded" %>
+
+
+
+    <div class="col m-2 p-8 text-left">
+      <%= render "rentals/form", rental: rentals_url %>
+      <%#<%= link_to "Rent it!", new_board_rental_path(@board), class:"btn btn-lg btn-danger justify-content-self rounded" %>
     </div>
   </div>
 </div>
