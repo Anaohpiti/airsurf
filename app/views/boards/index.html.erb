@@ -1,4 +1,14 @@
 <div class="container container-index-boards rounded">
+  <div class="d-flex justify-content-left m-3 p-3 rounded">
+    <%= form_tag boards_path, method: :get, class: "d-flex align-items-center mw-60" do %>
+      <div>
+        <%= text_field_tag :query, params[:query], placeholder: "Enter your location", class: "form-control w-55" %>
+      </div>
+      <div>
+        <%= submit_tag "Find your board", class: "mx-3 btn btn-warning" %>
+      </div>
+    <% end %>
+  </div>
   <h1 class="text-white padd-left marg-top">Boards available</h1>
   <div class="content-boards rounded">
     <% @boards.each do |board| %>
