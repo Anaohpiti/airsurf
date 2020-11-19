@@ -1,8 +1,8 @@
 class BoardsController < ApplicationController
-before_action(:set_board, only: [:show])
-before_action(:set_rental, only: [:show])
+  before_action(:set_board, only: [:show])
+  before_action(:set_rental, only: [:show])
 
-skip_before_action(:authenticate_user!, only: [ :index, :show ])
+  skip_before_action(:authenticate_user!, only: [ :index, :show ])
 
 
   def index
@@ -11,7 +11,8 @@ skip_before_action(:authenticate_user!, only: [ :index, :show ])
     @markers = @boards.geocoded.map do |board|
       {
         lat: board.latitude,
-        lng: board.longitude
+        lng: board.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { board: board })
       }
     end
   end
