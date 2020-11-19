@@ -1,5 +1,20 @@
 .container-index-boards {
   margin-top: 25px;
+  margin: 0 auto;
+  max-width: 1400px;
+}
+
+.content-max-width {
+  max-width: 1300px;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+#map {
+  position: sticky;
+  right: 115px;
+  top: 150px;
+  border-radius: 20px;
 }
 
 .content-boards {
