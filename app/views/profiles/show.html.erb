@@ -4,8 +4,8 @@
   <h2 class="text-dark pt-3 mt-3 ml-0 mb-0"><%= @profile.name.present? ? "#{@profile.name.capitalize}'s" : "My" %> Profile</h2>
   <div class="container d-flex bg-light p-2 justify-content-between">
     <div>
-      <p>Email: <%= @profile.email %></p>
-      <p>Password: ******** </p>
+      <p><i class="far fa-envelope"></i>   <%= @profile.email %></p>
+      <p><i class="fas fa-lock"></i>   ******** </p>
     </div>
     <div class="">
       <% if @profile.photo.attached? %>
