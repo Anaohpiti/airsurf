@@ -7,20 +7,17 @@ class BoardsController < ApplicationController
 
   def index
 
-    @boards = Board.all
+    if params[:query].present?
+      @boards = Board.near(params[:query],5)
+    else
+      @boards = Board.all
+    end
     @markers = @boards.geocoded.map do |board|
       {
         lat: board.latitude,
         lng: board.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { board: board })
       }
-    end 
-    
-    if params[:query].present?
-      #@boards = Board.search_by_location(params[:query])
-      @boards = Board.near(params[:query],5)
-    else
-      @boards = Board.all
     end
   end
 
