@@ -1,99 +1,115 @@
 
-<div class="container">
-  <h2 class="text-white mt-3 ml-0 mb-0"><%= @profile.name.capitalize %>'s Profile:</h2>
+<div class="container bg-light">
+
+  <h2 class="text-dark pt-3 mt-3 ml-0 mb-0"><%= @profile.name.present? ? "#{@profile.name.capitalize}'s" : "My" %> Profile</h2>
   <div class="container d-flex bg-light p-2 justify-content-between">
     <div>
-      <p>Name: <%= @profile.name.capitalize %></p>
       <p>Email: <%= @profile.email %></p>
       <p>Password: ******** </p>
     </div>
     <div class="">
-        <%= cl_image_tag(@profile.photo.key, class: "profile-image ") %>
-    </div>
-  </div>
-
-  <div class="d-flex mt-3 ml-0 mb-0 justify-content-between">
-    <h2 class="text-white mb-0 "><%= @profile.name.capitalize %>'s Boards:</h2>
-    <%= link_to "Add Board", new_board_path, class: "btn btn-danger mb-2" %>
-  </div>
-
-  <div class="container bg-light px-3 py-1 ">
-   <% if @profile.boards.empty? %>
-       <p class="text-muted font-italic my-0">You have no boards</p>
-    <% end %>
-    <% @profile.boards.each do |board| %>
-    <div class="card my-3 p-2">
-      <%=  link_to board_path(board), class: "text-decoration-none text-dark" do %>
-      <div class="card-body p-0 d-flex justify-content-between ">
-      <div>
-        <h5 class="font-weight-bold"> <%= board.title%></h5>
-        <p> <%= board.description%></p>
-      </div>
-        <%= cl_image_tag(board.photo.key, class: "board-image") %>
-      </div>
+      <% if @profile.photo.attached? %>
+        <%= cl_image_tag @profile.photo.key, class: "avatar" %>
+      <% else %>
+        <%= image_tag "default_avatar.png", class: "avatar" %>
       <% end %>
     </div>
-      <% end %>
   </div>
 
-  <h2 class="text-white mt-3 ml-0 mb-0"><%= @profile.name.capitalize %>'s Rental History:</h2>
-  <div class="container bg-light px-3 mb-3 py-1 ">
-    <% if @profile.rentals.empty? %>
-       <p class="text-muted font-italic my-0">You have no rental history</p>
-    <% end %>
 
-    <% @profile.rentals.each do |rental| %>
-    <div class="card my-3 p-2">
-      <div class="card-body p-0 d-flex align-items-center">
-        <div class="text-center pr-3 border-right">
-          <h5 class="font-italic">Status</h5>
-          <p class ="rounded bg-warning text-white px-2 py-3"> <%= rental.status %></p>
-        </div>
-        <div class="ml-3">
-            <p class="m-1"> Date range: <%= rental.start_date%> - <%= rental.end_date%></p>
-            <p class="m-1"> Total Price: <%= rental.total_price%> <strong>€</strong></p>
-            <p class="m-1">Board: <%= rental.board.title %></p>
-        </div>
-        <%= cl_image_tag(rental.board.photo.key, class: "board-image ml-auto") %>
-      </div>
-    </div>
-      <% end %>
-  </div>
-
-<h2 class="text-white mt-3 ml-0 mb-0">People Renting from <%= @profile.name.capitalize %></h2>
-  <div class="container bg-light px-3 mb-3 py-1 ">
-   <% if @profile.boards.empty? %>
-       <p class="text-muted font-italic my-0">You have no boards to rent</p>
-    <% end %>
-    <% @profile.boards.each do |board| %>
-      <% board.rentals.each do |rental| %>
-        <div class="card my-3 p-2">
-          <div class="card-body p-0 d-flex align-items-center">
-            <div class="">
-              <p class ="text-center"><strong>Status:</strong> <i><%= rental.status %></i></p>
-              <% if rental.status == "pending"%>
-                <div class="d-flex">
-                  <%= link_to "Approve", "", class: "btn btn-success m-2" %>
-                  <%= link_to "Deny", "", class: "btn btn-warning m-2" %>
+  <ul class="nav nav-tabs mt-3 " id="myTab" role="tablist">
+    <li class="nav-item bg-white border" role="presentation">
+      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Renter Activity</a>
+    </li>
+    <li class="nav-item bg-white border" role="presentation">
+      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Owner Activity</a>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+      <h2 class="text-dark mt-3 ml-3 mb-0"><%= @profile.name.present? ? "#{@profile.name.capitalize}'s" : "My" %> Rental History:</h2>
+      <div class="container bg-light px-3 mb-3 py-1 ">
+        <% if @profile.rentals.empty? %>
+          <p class="text-muted font-italic mt-0 mb-3">You have no rental history</p>
+        <% end %>
+        <% @profile.rentals.each do |rental| %>
+          <div class="card my-3 p-2">
+            <div class="card-body p-0 d-flex align-items-center">
+              <div class="text-center pr-3 border-right">
+                <p class ="rounded bg-warning text-dark px-2 py-3"> <%= rental.status %></p>
               </div>
-              <% end %>
+              <div class="ml-3">
+                <p class="m-1"> Date range: <%= rental.start_date%> - <%= rental.end_date%></p>
+                <p class="m-1"> Total Price: <%= rental.total_price%> <strong>€</strong></p>
+                <p class="m-1">Board: <%= rental.board.title %></p>
+              </div>
+              <%= cl_image_tag(rental.board.photo.key, class: "board-image ml-auto") %>
             </div>
-            <div class="text-center px-3 border-right border-left">
-              <h5 class="font-weight-bold mb-2">Renter</h5>
-              <%#<%= cl_image_tag(rental.user.photo.key, class: "avatar ") %>
-              <p> <%= rental.user.name.capitalize %> </p>
-            </div>
-            <div class="ml-3">
-                <p class="m-1"> Date range: <%= rental.start_date%> - <%= rental.start_date%></p>
-                <p class="m-1"> Total Price: <%= rental.total_price%></p>
-                <p class="m-1">Board being rented: <%= rental.board.title %></p>
-            </div>
-            <%= cl_image_tag(rental.board.photo.key, class: "board-image ml-auto") %>
           </div>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
+        <% end %>
 
-</div>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+      <div class="d-flex mt-3 ml-0 mb-0 justify-content-between">
+        <h2 class="text-dark ml-3 mb-0 text-bottom "><%= @profile.name.present? ? "#{@profile.name.capitalize}'s" : "My" %> Boards:</h2>
+        <%= link_to "Add Board", new_board_path, class: "btn btn-danger mb-2" %>
+      </div>
+      <div class="container px-3 py-1 ">
+        <% if @profile.boards.empty? %>
+          <p class="text-muted font-italic mt-0 mb-3">You have no boards</p>
+        <% end %>
+        <% @profile.boards.each do |board| %>
+          <div class="card mb-3 p-2">
+            <%=  link_to board_path(board), class: "text-decoration-none text-dark" do %>
+              <div class="card-body p-0 d-flex justify-content-between ">
+                <div>
+                  <h5 class="font-weight-bold"> <%= board.title%></h5>
+                  <p> <%= board.description%></p>
+                </div>
+                <%= cl_image_tag(board.photo.key, class: "board-image") %>
+              </div>
+
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+      <h2 class="text-dark mt-3 ml-3 mb-0">People Renting from <%= @profile.name.capitalize %></h2>
+      <div class="container bg-light px-3 mb-3 py-1 ">
+        <% if @profile.boards.empty? %>
+          <p class="text-muted font-italic mt-0 mb-3">You have no boards to rent</p>
+        <% elsif @owner_has_no_rentals %>
+          <p class="text-muted font-italic mt-0 mb-3">You have no rental requests for your boards</p>
+        <% end %>
+        <% @profile.boards.each do |board| %>
+          <% board.rentals.each do |rental| %>
+            <div class="card mb-3 p-2">
+              <div class="card-body p-0 d-flex align-items-center">
+                <div class="">
+                  <p class ="text-center pr-2"><i><%= rental.status %></i></p>
+                  <% if rental.status == "pending"%>
+                    <div class="d-flex">
+                      <%= link_to "Approve", approve_rental_path(rental), method: :patch, class: "btn btn-success m-2" %>
+                      <%= link_to "Deny",  deny_rental_path(rental), method: :patch, class: "btn btn-warning m-2" %>
+                    </div>
+                  <% end %>
+                </div>
+                <div class="text-center px-3 border-right border-left">
+                  <h5 class="font-weight-bold mb-2">Renter</h5>
+                  <%= cl_image_tag(rental.user.photo.key, class: "avatar ") %>
+                  <p> <%= rental.user.name.capitalize %> </p>
+                </div>
+                <div class="ml-3">
+                  <p class="m-1"> Date range: <%= rental.start_date%> - <%= rental.start_date%></p>
+                  <p class="m-1"> Total Price: <%= rental.total_price%></p>
+                  <p class="m-1">Board being rented: <%= rental.board.title %></p>
+                </div>
+                <%= cl_image_tag(rental.board.photo.key, class: "board-image ml-auto") %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>

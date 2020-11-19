@@ -36,18 +36,16 @@ class RentalsController < ApplicationController
 
   def deny
     @rental.status = "denied"
-    @rental.update(rental_params)
-    @rental.board = @board
+    @rental.save
     # yellow redirect to rentals index
-    redirect_to rentals_path(rental)
+    redirect_to profile_path
   end
 
   def approve
     @rental.status = "approved"
-    @rental.update(rental_params)
-    @rental.board = @board
+    @rental.save
     # yellow redirect to rentals index
-    redirect_to rentals_path(rental)
+    redirect_to profile_path
   end
 
   # yellow i think EDIT and UPDATE not required

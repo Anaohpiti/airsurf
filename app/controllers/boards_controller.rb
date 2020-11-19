@@ -18,7 +18,7 @@ skip_before_action(:authenticate_user!, only: [ :index, :show ])
 
   def create
     @board = Board.new(board_params)
-    @board.price_per_day *= 100
+    @board.price_per_day *= 100 if @board.price_per_day.present?
     @user = current_user
 
     @board.user = @user
