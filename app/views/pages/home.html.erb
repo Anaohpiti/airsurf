@@ -1,12 +1,16 @@
 <div class="banner image-position">
   <div class="home-banner">
     <div class="content-home text-center">
-      <h1>Airsurf</h1>
+      <h1>AirSurf</h1>
       <p>You want to go surfing? Rent it!</p>
-      <!--<% if false %>
-        <%= simple_form_for @boards do |f| %>
-          <%= f.input :name %>
-          <%= f.submit "Find your board", class:"btn btn-primary" %>
+      <div class="d-flex justify-content-center">
+        <%= form_tag boards_path, method: :get, class: "w-50" do %>
+          <%= text_field_tag :query,
+            params[:query],
+            placeholder: "Enter your location",
+            class: "form-control rounded"
+          %>
+          <%= submit_tag "Find your board", class: "my-3 btn btn-primary btn-home" %>
         <% end %>
       <% end %> -->
       <%# > Movie.search_by_title_and_syllabus("superman batm") %>
@@ -21,6 +25,7 @@
         %>
         <%= submit_tag "Find your board", class: "my-3 btn btn-primary btn-home" %>
       <% end %>
+
       </div>
     </div>
   </div>
