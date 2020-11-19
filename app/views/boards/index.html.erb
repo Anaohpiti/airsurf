@@ -5,12 +5,12 @@
       <div class="card card-boards my-4" style="width: 20rem;">
         <%= cl_image_tag board.photo.key, height: 350, crop: :thumb, class: "card-img-top" %>
         <div class="card-body white-card-body text-center d-flex flex-column">
-          <h5 class="card-title "><%= board.title %></h5>
+          <h3 class="card-title "><%= board.title %></h3>
           <div class="mt-auto interline-card-content">
-          <p class="card-text"></p>
-          <p class="card-text"><%= truncate board.description, length:28 %></p>
-          <p class="card-text"><i class="fas fa-map-marker-alt"></i> <%= board.location %></p>
-          <p class="card-text"><%= (board.price_per_day)/100 %>€ / day</p>
+            <p class="card-text"></p>
+            <p class="card-text"><%= truncate board.description, length:28 %></p>
+            <p class="card-text" id="card-location" ><i class="fas fa-map-marker-alt"></i> <%= board.location %></p>
+            <p class="card-text" id="card-price" ><%= (board.price_per_day)/100 %>€/day</p>
             <%= link_to "Rent it!", board_path(board), class:"btn btn-primary" %>
           </div>
         </div>

@@ -31,8 +31,18 @@
   word-wrap: break-word;
 }
 
+#card-location {
+  font-weight: 500;
+  font-style: italic;
+}
+
+#card-price {
+  font-size: 20px;
+  font-weight: bold;
+}
+
 .interline-card-content {
-  line-height: 0;
+  line-height: 0.4;
 }
 
 // Smallest device
