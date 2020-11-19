@@ -6,7 +6,11 @@ skip_before_action(:authenticate_user!, only: [ :index, :show ])
 
 
   def index
-    @boards = Board.all
+    if params[:query].present?
+      @boards = Board.search_by_location(params[:query])
+    else
+      @boards = Board.all
+    end
   end
 
   def show
@@ -35,6 +39,7 @@ skip_before_action(:authenticate_user!, only: [ :index, :show ])
   def set_board
     @board = Board.find(params[:id])
   end
+
 
   # Strong Params
   def board_params

@@ -9,7 +9,18 @@
           <%= f.submit "Find your board", class:"btn btn-primary" %>
         <% end %>
       <% end %> -->
-      <%= link_to "Find your board", boards_path, class: "btn btn-primary btn-home" %>
+      <%# > Movie.search_by_title_and_syllabus("superman batm") %>
+      <div class="row justify-content-center">
+      <%= form_tag boards_path, method: :get do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "",
+          placeholder: "Enter your location",
+          class: "col-12"
+        %>
+        <%= submit_tag "Find your board", class: "my-3 btn btn-primary btn-home" %>
+      <% end %>
+      </div>
     </div>
   </div>
 </div>
