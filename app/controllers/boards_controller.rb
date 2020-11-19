@@ -7,6 +7,13 @@ skip_before_action(:authenticate_user!, only: [ :index, :show ])
 
   def index
     @boards = Board.all
+
+    @markers = @boards.geocoded.map do |board|
+      {
+        lat: board.latitude,
+        lng: board.longitude
+      }
+    end
   end
 
   def show

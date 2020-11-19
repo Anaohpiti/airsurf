@@ -1,8 +1,9 @@
 <div class="container container-index-boards rounded">
   <h1 class="text-white padd-left marg-top">Boards available</h1>
-  <div class="content-boards rounded">
-    <% @boards.each do |board| %>
-      <div class="card card-boards my-4" style="width: 20rem;">
+  <div class="row">
+    <div class="content-boards rounded col-sm-6">
+      <% @boards.each do |board| %>
+        <div class="card card-boards my-4" style="width: 20rem;">
         <%= cl_image_tag board.photo.key, height: 350, crop: :thumb, class: "card-img-top" %>
         <div class="card-body white-card-body text-center d-flex flex-column">
           <h3 class="card-title "><%= board.title %></h3>
@@ -14,7 +15,13 @@
             <%= link_to "Rent it!", board_path(board), class:"btn btn-primary" %>
           </div>
         </div>
-      </div>
-    <% end %>
+        </div>
+      <% end %>
+    </div>
+    <div id="map" class="col-sm-6"
+     style="width: 100%; height: 600px;"
+     data-markers="<%= @markers.to_json %>"
+     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
   </div>
 </div>

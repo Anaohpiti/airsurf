@@ -4,7 +4,7 @@
 
 .content-boards {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   column-gap: 15px;
 }
 
@@ -62,7 +62,7 @@
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
   .content-boards {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
   }
 }
 
@@ -76,6 +76,6 @@
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
   .content-boards {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 }
