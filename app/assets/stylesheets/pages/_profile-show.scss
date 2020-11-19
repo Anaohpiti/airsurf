@@ -10,3 +10,10 @@
   width: auto;
   border-radius: 4px;
 }
+
+.active-tab {
+  &:active {
+    color:white;
+    background-color: aqua;
+  }
+}
