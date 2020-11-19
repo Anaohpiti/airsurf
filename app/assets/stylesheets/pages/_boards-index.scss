@@ -1,18 +1,30 @@
+.container-index-boards {
+  margin-top: 25px;
+}
+
 .content-boards {
-  background-color: $light-gray;
-  padding: 5px 20px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   column-gap: 15px;
 }
 
+.padd-left {
+  padding-left: 20px;
+}
 
-.list-of-cards {
-
+.marg-top {
+  margin-top: 15px;;
 }
 
 .card-boards {
   justify-self: center;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.card-img-top {
+  border-radius: 20px 20px 0 0;
 }
 
 .card-text {
