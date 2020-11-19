@@ -3,17 +3,7 @@
     <div class="content-home text-center">
       <h1>AirSurf</h1>
       <p>You want to go surfing? Rent it!</p>
-      <div class="d-flex justify-content-center">
-        <%= form_tag boards_path, method: :get, class: "w-50" do %>
-          <%= text_field_tag :query,
-            params[:query],
-            placeholder: "Enter your location",
-            class: "form-control rounded"
-          %>
-          <%= submit_tag "Find your board", class: "my-3 btn btn-primary btn-home" %>
-        <% end %>
-      <% end %> -->
-      <%# > Movie.search_by_title_and_syllabus("superman batm") %>
+
       <div class="row justify-content-center">
       <%= form_tag boards_path, method: :get do %>
         <%= text_field_tag :query,
