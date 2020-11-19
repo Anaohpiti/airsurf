@@ -39,7 +39,7 @@
                 <p class ="rounded bg-warning text-dark px-2 py-3"> <%= rental.status %></p>
               </div>
               <div class="ml-3">
-                <p class="m-1"> <i class="far fa-calendar-plus"></i>   <%= rental.start_date%> - <%= rental.end_date%></p>
+                <p class="m-1"> <i class="far fa-calendar-plus"></i>   <%= rental.start_date%> to <%= rental.end_date%></p>
                 <p class="m-1"> <i class="fas fa-tag"></i>   <%= rental.total_price%> <strong>€</strong></p>
                 <p class="m-1"> <i class="far fa-hand-peace"></i>   <%= rental.board.title %></p>
               </div>
@@ -100,7 +100,7 @@
                   <p> <%= rental.user.name.capitalize %> </p>
                 </div>
                 <div class="ml-3">
-                  <p class="m-1"> <i class="far fa-calendar-plus"></i>   <%= rental.start_date%> - <%= rental.start_date%></p>
+                  <p class="m-1"> <i class="far fa-calendar-plus"></i>   <%= rental.start_date%> to <%= rental.start_date%></p>
                   <p class="m-1"> <i class="fas fa-tag"></i>   <%= rental.total_price%></p>
                   <p class="m-1"> <i class="far fa-hand-peace"></i> <%= rental.board.title %></p>
                 </div>
