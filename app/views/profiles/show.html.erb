@@ -1,17 +1,21 @@
 
 <div class="container bg-light">
 
-  <h2 class="text-dark pt-3 mt-3 ml-0 mb-0"><%= @profile.name.capitalize %>'s Profile:</h2>
+  <h2 class="text-dark pt-3 mt-3 ml-0 mb-0"><%= @profile.name.present? ? "#{@profile.name.capitalize}'s" : "My" %> Profile</h2>
   <div class="container d-flex bg-light p-2 justify-content-between">
     <div>
-      <p>Name: <%= @profile.name.capitalize %></p>
       <p>Email: <%= @profile.email %></p>
       <p>Password: ******** </p>
     </div>
     <div class="">
-        <%= cl_image_tag(@profile.photo.key, class: "profile-image ") %>
+      <% if @profile.photo.attached? %>
+        <%= cl_image_tag @profile.photo.key, class: "avatar" %>
+      <% else %>
+        <%= image_tag "default_avatar.png", class: "avatar" %>
+      <% end %>
     </div>
   </div>
+
 
   <ul class="nav nav-tabs mt-3 " id="myTab" role="tablist">
     <li class="nav-item bg-white border" role="presentation">
@@ -23,7 +27,7 @@
   </ul>
   <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-      <h2 class="text-dark mt-3 ml-3 mb-0"><%= @profile.name.capitalize %>'s Rental History:</h2>
+      <h2 class="text-dark mt-3 ml-3 mb-0"><%= @profile.name.present? ? "#{@profile.name.capitalize}'s" : "My" %> Rental History:</h2>
       <div class="container bg-light px-3 mb-3 py-1 ">
         <% if @profile.rentals.empty? %>
           <p class="text-muted font-italic mt-0 mb-3">You have no rental history</p>
@@ -43,11 +47,12 @@
             </div>
           </div>
         <% end %>
+
       </div>
     </div>
     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
       <div class="d-flex mt-3 ml-0 mb-0 justify-content-between">
-        <h2 class="text-dark ml-3 mb-0 text-bottom "><%= @profile.name.capitalize %>'s Boards:</h2>
+        <h2 class="text-dark ml-3 mb-0 text-bottom "><%= @profile.name.present? ? "#{@profile.name.capitalize}'s" : "My" %> Boards:</h2>
         <%= link_to "Add Board", new_board_path, class: "btn btn-danger mb-2" %>
       </div>
       <div class="container px-3 py-1 ">
