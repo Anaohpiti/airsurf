@@ -66,17 +66,23 @@
   .content-boards {
     grid-template-columns: 1fr;
   }
+  #map {
+    display: none
+  }
 }
 
 // Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) {
+@media (min-width: 576px) and (max-width: 768px) {
   .content-boards {
     grid-template-columns: 1fr;
+  }
+  #map {
+    display: none
   }
 }
 
 // Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {
+@media (min-width: 768px)  {
   .content-boards {
     grid-template-columns: 1fr;
   }
@@ -92,6 +98,6 @@
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
   .content-boards {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr ;
   }
 }
