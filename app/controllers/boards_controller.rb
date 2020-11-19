@@ -8,6 +8,7 @@ skip_before_action(:authenticate_user!, only: [ :index, :show ])
   def index
     if params[:query].present?
       @boards = Board.search_by_location(params[:query])
+      #@boards = Board.near(params[:query],5)
     else
       @boards = Board.all
     end
