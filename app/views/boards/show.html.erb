@@ -1,5 +1,5 @@
-<div class="container bg-light rounded mt-5">
-    <div class="col pt-6 text-center">
+<div class="container bg-light rounded mt-5 pt-4">
+    <div class="col pt-6 text-left">
         <%= link_to "<< Back to Boards", boards_path, class:"btn btn-lg btn-outline-danger" %>
     </div>
   <div class="row">
@@ -50,6 +50,8 @@
 
 
     <div class="col m-2 p-8 text-left">
+      <h2 class="my-3 text-center">Rent this board!</h1>
+
       <%= render "rentals/form", rental: rentals_url %>
       <%#<%= link_to "Rent it!", new_board_rental_path(@board), class:"btn btn-lg btn-danger justify-content-self rounded" %>
     </div>
