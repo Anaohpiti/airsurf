@@ -17,3 +17,54 @@
     background-color: aqua;
   }
 }
+
+.profile-boards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 15px;
+
+  margin: 0 auto;
+  justify-content: center;
+}
+
+
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .content-boards {
+    grid-template-columns: 1fr;
+  }
+  #map {
+    display: none
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) and (max-width: 768px) {
+  .content-boards {
+    grid-template-columns: 1fr;
+  }
+  #map {
+    display: none
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px)  {
+  .content-boards {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .content-boards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .content-boards {
+    grid-template-columns: 1fr 1fr ;
+  }
+}
