@@ -3,7 +3,7 @@
     <%= form_tag boards_path, method: :get, class: "d-flex align-items-center mw-80" do %>
       <%= text_field_tag :query, params[:query], placeholder: "Enter your location", class: "form-control address-input" %>
       <%= select_tag :by_brand, options_for_select(@brands), include_blank: true, class: "form-control mx-3" %>
-      <%= submit_tag "Find your board", class: "btn btn-danger" %>
+      <%= submit_tag "Find your board", class: "btn border-white text-white" %>
     <% end %>
   </div>
 
@@ -12,6 +12,7 @@
     <div class="content-boards rounded flex-grow-1">
       <% @boards.each do |board| %>
         <div class="card card-boards my-4" style="width: 20rem;">
+      <%=  link_to board_path(board), class: "text-decoration-none text-dark" do %>
         <%= cl_image_tag board.photo.key, height: 350, crop: :thumb, class: "card-img-top" %>
         <div class="card-body white-card-body text-center d-flex flex-column">
           <h3 class="card-title "><%= board.title %></h3>
@@ -20,9 +21,10 @@
             <p class="card-text"><%= truncate board.description, length:28 %></p>
             <p class="card-text" id="card-location" ><i class="fas fa-map-marker-alt"></i> <%= board.location %></p>
             <p class="card-text" id="card-price" ><%= (board.price_per_day)/100 %>€/day</p>
-            <%= link_to "Rent it!", board_path(board), class:"btn btn-danger" %>
+            <%#= link_to "Rent it!", board_path(board), class:"btn btn-danger" %>
           </div>
         </div>
+        <% end  %>
         </div>
       <% end %>
     </div>
