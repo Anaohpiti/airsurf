@@ -1,17 +1,17 @@
 
-<div class="container bg-light">
+<div class="container">
 
-  <h2 class="text-dark pt-3 mt-3 ml-0 mb-0"><%= @profile.name.present? ? "#{@profile.name.capitalize}'s" : "My" %> Profile</h2>
-  <div class="container d-flex bg-light p-2 justify-content-between">
+  <h2 class="text-white pt-3 mt-3 ml-0 mb-0"><%= @profile.name.present? ? "#{@profile.name.capitalize}'s" : "My" %> Profile</h2>
+  <div class="container  text-white d-flex p-2 justify-content-between">
     <div>
       <p><i class="far fa-envelope"></i>   <%= @profile.email %></p>
-      <p><i class="fas fa-lock"></i>   ******** </p>
+      <p><i class="fas fa-lock"></i>   <%= link_to "Update Password","",class:"text-white" %></p>
     </div>
     <div class="">
       <% if @profile.photo.attached? %>
-        <%= cl_image_tag @profile.photo.key, class: "avatar" %>
+        <%= cl_image_tag @profile.photo.key, class: "avatar-profile" %>
       <% else %>
-        <%= image_tag "default_avatar.png", class: "avatar" %>
+        <%= image_tag "default_avatar.png", class: "avatar-profile" %>
       <% end %>
     </div>
   </div>
@@ -27,21 +27,20 @@
   </ul>
   <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-      <h2 class="text-dark mt-3 ml-3 mb-0"><%= @profile.name.present? ? "#{@profile.name.capitalize}'s" : "My" %> Rental History:</h2>
-      <div class="container bg-light px-3 mb-3 py-1 ">
+      <div class="container px-3 mb-3 py-1 ">
         <% if @profile.rentals.empty? %>
           <p class="text-muted font-italic mt-0 mb-3">You have no rental history</p>
         <% end %>
         <% @profile.rentals.each do |rental| %>
           <div class="card my-3 p-2">
             <div class="card-body p-0 d-flex align-items-center">
-              <div class="text-center pr-3 border-right">
+              <div class="text-center ml-2 mt-3 pr-3 border-right">
                 <p class ="rounded bg-warning text-dark px-2 py-3"> <%= rental.status %></p>
               </div>
               <div class="ml-3">
-                <p class="m-1"> Date range: <%= rental.start_date%> - <%= rental.end_date%></p>
+                <p class="m-1 font-weight-bold"> <%= rental.board.title %></p>
+                <p class="m-1"> From <%= rental.start_date%> to <%= rental.end_date%></p>
                 <p class="m-1"> Total Price: <%= rental.total_price%> <strong>€</strong></p>
-                <p class="m-1">Board: <%= rental.board.title %></p>
               </div>
               <%= cl_image_tag(rental.board.photo.key, class: "board-image ml-auto") %>
             </div>
@@ -52,34 +51,36 @@
     </div>
     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
       <div class="d-flex mt-3 ml-0 mb-0 justify-content-between">
-        <h2 class="text-dark ml-3 mb-0 text-bottom "><%= @profile.name.present? ? "#{@profile.name.capitalize}'s" : "My" %> Boards:</h2>
-        <%= link_to "Add Board", new_board_path, class: "btn btn-danger mb-2" %>
+        <h2 class=" ml-3 mb-0 text-white text-bottom "> My Boards</h2>
+        <%= link_to "Add Board", new_board_path, class: "btn border-white text-white mb-2 mr-3" %>
       </div>
-      <div class="container px-3 py-1 ">
+      <div class="profile-boards-grid rounded">
         <% if @profile.boards.empty? %>
           <p class="text-muted font-italic mt-0 mb-3">You have no boards</p>
         <% end %>
-        <% @profile.boards.each do |board| %>
-          <div class="card mb-3 p-2">
-            <%=  link_to board_path(board), class: "text-decoration-none text-dark" do %>
-              <div class="card-body p-0 d-flex justify-content-between ">
-                <div>
-                  <h5 class="font-weight-bold"> <%= board.title%></h5>
-                  <p> <%= board.description%></p>
-                </div>
-                <%= cl_image_tag(board.photo.key, class: "board-image") %>
-              </div>
+        <div class="profile-boards-grid rounded">
+          <% @profile.boards.each do |board| %>
+          <div class="card card-boards my-4" style="width: 20rem;">
+          <%=  link_to board_path(board), class: "text-decoration-none text-dark" do %>
+            <%= cl_image_tag board.photo.key, height: 350, crop: :thumb, class: "card-img-top" %>
+            <div class="card-body white-card-body text-center d-flex flex-column">
+              <h3 class="card-title "><%= board.title %></h3>
+              <div class="mt-auto interline-card-content">
+                <p class="card-text"></p>
 
+              </div>
+            </div>
             <% end %>
           </div>
-        <% end %>
+          <% end %>
+        </div>
       </div>
-      <h2 class="text-dark mt-3 ml-3 mb-0">People Renting from <%= @profile.name.capitalize %></h2>
-      <div class="container bg-light px-3 mb-3 py-1 ">
+      <h2 class="text-white mt-3 ml-3 mb-0">People Renting from <%= @profile.name.capitalize %></h2>
+      <div class="container px-3 mb-3 py-1 ">
         <% if @profile.boards.empty? %>
-          <p class="text-muted font-italic mt-0 mb-3">You have no boards to rent</p>
+          <p class="text-white font-italic mt-0 mb-3">You have no boards to rent</p>
         <% elsif @owner_has_no_rentals %>
-          <p class="text-muted font-italic mt-0 mb-3">You have no rental requests for your boards</p>
+          <p class="text-white font-italic mt-0 mb-3">You have no rental requests for your boards</p>
         <% end %>
         <% @profile.boards.each do |board| %>
           <% board.rentals.each do |rental| %>
