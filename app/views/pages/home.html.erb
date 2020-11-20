@@ -1,15 +1,22 @@
 <div class="banner image-position">
   <div class="home-banner">
     <div class="content-home text-center">
-      <h1>Airsurf</h1>
+      <h1>AirSurf</h1>
       <p>You want to go surfing? Rent it!</p>
-      <!--<% if false %>
-        <%= simple_form_for @boards do |f| %>
-          <%= f.input :name %>
-          <%= f.submit "Find your board", class:"btn btn-primary" %>
-        <% end %>
-      <% end %> -->
-      <%= link_to "Find your board", boards_path, class: "btn btn-danger btn-home" %>
+
+      <div class="row justify-content-center">
+      <%= form_tag boards_path, method: :get do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "address-input",
+          placeholder: "Enter your location",
+          class: "col-12 address-input",
+          id: ""
+        %>
+        <%= submit_tag "Find your board", class: "my-3 btn btn-danger btn-home" %>
+      <% end %>
+
+      </div>
     </div>
   </div>
 </div>

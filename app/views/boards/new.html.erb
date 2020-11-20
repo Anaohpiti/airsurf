@@ -1,5 +1,6 @@
 <div class="container p-5 text-white">
-  <h1 class="my-3 text-center">Add a board to your quiver</h1>
+  <%= link_to "< Back to Boards", boards_path, class:"btn btn-outline-light align-items-end" %>
+  <h1 class="my-3 text-center border-bottom">Add a board to your quiver</h1>
   <div class="d-flex justify-content-center">
     <div class="content-new-board">
       <%= simple_form_for @board do |f|%>
@@ -17,5 +18,4 @@
       <% end %>
     </div>
   </div>
-  <%= link_to ">> Back to Boards", boards_path, class:"btn btn-outline-light align-items-end" %>
 </div>

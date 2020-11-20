@@ -4,19 +4,26 @@ format = '%m/%d/%y' # mm/dd/yy; adjust as needed
 class BoardsController < ApplicationController
   before_action(:set_board, only: [:show])
   before_action(:set_rental, only: [:show])
-
   skip_before_action(:authenticate_user!, only: [ :index, :show ])
+  has_scope :by_brand
+
 
   def index
-    @boards = Board.all
+    @brands = brand_list
+    @boards = apply_scopes(Board).all
+    if params[:query].present?
+      @boards = @boards.near(params[:query],5)
+    end
+    @markers = @boards.geocoded.map do |board|
+      {
+        lat: board.latitude,
+        lng: board.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { board: board })
+      }
+    end
   end
 
   def show
-    # @rentals = Rental.all
-    # @blocked_dates = []
-    # start = rental.start_date
-    # finish = rental.end_date
-    # @blocked_dates << start
     @blocked_dates = @board.rentals.each_with_object([]) do |rental, result|
       result << (rental.start_date..rental.end_date).to_a
     end.flatten
@@ -46,9 +53,15 @@ class BoardsController < ApplicationController
     @board = Board.find(params[:id])
   end
 
-  # Strong Params
+  def brand_list
+    brands = []
+    Board.all.each do |board|
+      brands << board.brand
+    end
+    brands.uniq
+  end
+
   def board_params
-    # ############################################yellow### - how do we deal with user_id? - yellow #######################
     params.require(:board).permit(:description, :user_id, :location, :height, :volume, :brand, :condition, :price_per_day, :title, :photo)
   end
 
