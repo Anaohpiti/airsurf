@@ -9,6 +9,12 @@
 
     <div class="col text-center m-4 rounded">
       <h1><%= @board.title %></h1>
+
+      <% if @board.available?   %>
+        <p class="text-danger"><strong>Available today 🤙 </strong></p>
+      <% else %>
+        <p class="text-danger"><strong>Not available!</strong></p>
+      <% end  %>
       <div>
         <table class="table mt-2">
           <thead class="bg-primary text-white">
