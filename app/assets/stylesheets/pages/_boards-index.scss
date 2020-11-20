@@ -14,7 +14,7 @@
   position: sticky;
   right: 115px;
   top: 150px;
-  border-radius: 20px;
+  border-radius: 2px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
@@ -25,7 +25,7 @@
 }
 
 .padd-left {
-  padding-left: 20px;
+  padding-left: 83px;
 }
 
 .marg-top {
@@ -35,12 +35,12 @@
 .card-boards {
   justify-self: center;
   border: none;
-  border-radius: 20px;
+  border-radius: 2px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 .card-img-top {
-  border-radius: 20px 20px 0 0;
+  border-radius: 2px 2px 0 0;
 }
 
 .card-text {
@@ -82,16 +82,19 @@
 }
 
 // Medium devices (tablets, 768px and up)
-@media (min-width: 768px)  {
+@media (min-width: 768px) and (max-width: 992px)  {
   .content-boards {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+  }
+  #map {
+    display: none
   }
 }
 
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
   .content-boards {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
   }
 }
 
