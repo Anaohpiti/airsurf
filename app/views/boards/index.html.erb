@@ -1,13 +1,10 @@
 
 <div class="container-index-boards rounded">
   <div class="d-flex justify-content-left m-3 p-3 rounded">
-    <%= form_tag boards_path, method: :get, class: "d-flex align-items-center mw-60" do %>
-      <div>
-        <%= text_field_tag :query, params[:query], placeholder: "Enter your location", class: "form-control w-55" %>
-      </div>
-      <div>
-        <%= submit_tag "Find your board", class: "mx-3 btn btn-warning" %>
-      </div>
+    <%= form_tag boards_path, method: :get, class: "d-flex align-items-center mw-80" do %>
+      <%= text_field_tag :query, params[:query], placeholder: "Enter your location", class: "form-control address-input" %>
+      <%= select_tag :by_brand, options_for_select(@brands), include_blank: true, class: "form-control mx-3" %>
+      <%= submit_tag "Find your board", class: "btn btn-warning" %>
     <% end %>
   </div>
 

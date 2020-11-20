@@ -1,16 +1,14 @@
 class BoardsController < ApplicationController
   before_action(:set_board, only: [:show])
   before_action(:set_rental, only: [:show])
-
   skip_before_action(:authenticate_user!, only: [ :index, :show ])
-
+  has_scope :by_brand
 
   def index
-
+    @brands = brand_list
+    @boards = apply_scopes(Board).all
     if params[:query].present?
-      @boards = Board.near(params[:query],5)
-    else
-      @boards = Board.all
+      @boards = @boards.near(params[:query],5)
     end
     @markers = @boards.geocoded.map do |board|
       {
@@ -48,10 +46,17 @@ class BoardsController < ApplicationController
     @board = Board.find(params[:id])
   end
 
+  def brand_list
+    brands = []
+    Board.all.each do |board|
+      brands << board.brand
+    end
+    brands.uniq
+  end
 
   # Strong Params
   def board_params
-  # ############################################yellow### - how do we deal with user_id? - yellow #######################
+  # yellow### - how do we deal with user_id? - yellow #######################
     params.require(:board).permit(:description, :user_id, :location, :height, :volume, :brand, :condition, :price_per_day, :title, :photo)
   end
 
