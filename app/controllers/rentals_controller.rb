@@ -15,6 +15,10 @@ class RentalsController < ApplicationController
     @rental = Rental.new(rental_params)
     @rental.board = @board
     @rental.user = current_user
+
+    @blocked_dates = []
+    @blocked_dates << (@rental.start_date..@rental.end_date).to_a
+
     # yellow redirect to rentals index
     # if !@rental.end_date || !@rental.start_date
     #   render :new, notice: 'please select your dates!'

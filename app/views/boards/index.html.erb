@@ -1,4 +1,3 @@
-
 <div class="container-index-boards rounded">
   <div class="d-flex justify-content-left m-3 p-3 rounded">
     <%= form_tag boards_path, method: :get, class: "d-flex align-items-center mw-80" do %>
@@ -21,7 +20,7 @@
             <p class="card-text"><%= truncate board.description, length:28 %></p>
             <p class="card-text" id="card-location" ><i class="fas fa-map-marker-alt"></i> <%= board.location %></p>
             <p class="card-text" id="card-price" ><%= (board.price_per_day)/100 %>€/day</p>
-            <%= link_to "Rent it!", board_path(board), class:"btn btn-primary" %>
+            <%= link_to "Rent it!", board_path(board), class:"btn btn-danger" %>
           </div>
         </div>
         </div>
