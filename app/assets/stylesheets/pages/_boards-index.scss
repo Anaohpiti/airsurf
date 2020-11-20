@@ -25,7 +25,7 @@
 }
 
 .padd-left {
-  padding-left: 20px;
+  padding-left: 83px;
 }
 
 .marg-top {
@@ -82,16 +82,19 @@
 }
 
 // Medium devices (tablets, 768px and up)
-@media (min-width: 768px)  {
+@media (min-width: 768px) and (max-width: 992px)  {
   .content-boards {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+  }
+  #map {
+    display: none
   }
 }
 
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
   .content-boards {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
   }
 }
 
