@@ -5,7 +5,7 @@
   <div class="container  text-white d-flex p-2 justify-content-between">
     <div>
       <p><i class="far fa-envelope"></i>   <%= @profile.email %></p>
-      <p><i class="fas fa-lock"></i>   ********</p>
+      <p><i class="fas fa-lock"></i>   <%= link_to "Update Password","",class:"text-white" %></p>
     </div>
     <div class="">
       <% if @profile.photo.attached? %>
