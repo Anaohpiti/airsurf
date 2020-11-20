@@ -3,7 +3,7 @@
     <%= form_tag boards_path, method: :get, class: "d-flex align-items-center mw-80" do %>
       <%= text_field_tag :query, params[:query], placeholder: "Enter your location", class: "form-control address-input" %>
       <%= select_tag :by_brand, options_for_select(@brands), include_blank: true, class: "form-control mx-3" %>
-      <%= submit_tag "Find your board", class: "btn btn-warning" %>
+      <%= submit_tag "Find your board", class: "btn btn-danger" %>
     <% end %>
   </div>
 
