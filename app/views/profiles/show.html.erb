@@ -58,22 +58,22 @@
         <% if @profile.boards.empty? %>
           <p class="text-muted font-italic mt-0 mb-3">You have no boards</p>
         <% end %>
-        <% @profile.boards.each do |board| %>
-        <div class="card card-boards my-4" style="width: 20rem;">
-        <%=  link_to board_path(board), class: "text-decoration-none text-dark" do %>
-          <%= cl_image_tag board.photo.key, height: 350, crop: :thumb, class: "card-img-top" %>
-          <div class="card-body white-card-body text-center d-flex flex-column">
-            <h3 class="card-title "><%= board.title %></h3>
-            <div class="mt-auto interline-card-content">
-              <p class="card-text"></p>
-              <p class="card-text"><%= truncate board.description, length:28 %></p>
-              <p class="card-text" id="card-location" ><i class="fas fa-map-marker-alt"></i> <%= board.location %></p>
-              <p class="card-text" id="card-price" ><%= (board.price_per_day)/100 %>€/day</p>
+        <div class="profile-boards-grid rounded">
+          <% @profile.boards.each do |board| %>
+          <div class="card card-boards my-4" style="width: 20rem;">
+          <%=  link_to board_path(board), class: "text-decoration-none text-dark" do %>
+            <%= cl_image_tag board.photo.key, height: 350, crop: :thumb, class: "card-img-top" %>
+            <div class="card-body white-card-body text-center d-flex flex-column">
+              <h3 class="card-title "><%= board.title %></h3>
+              <div class="mt-auto interline-card-content">
+                <p class="card-text"></p>
+
+              </div>
             </div>
+            <% end %>
           </div>
           <% end %>
         </div>
-        <% end %>
       </div>
       <h2 class="text-white mt-3 ml-3 mb-0">People Renting from <%= @profile.name.capitalize %></h2>
       <div class="container px-3 mb-3 py-1 ">
