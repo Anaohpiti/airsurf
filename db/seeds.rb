@@ -41,8 +41,8 @@ board1 = Board.new(
   location: "Rennes",
   description: "cool board for beginners",
   title: "Soft Board 8 ft",
-  height: (8 * 12),
-  volume: 33.2,
+  height: 8.0,
+  volume: 3333,
   brand: "Wavestorm",
   condition: "good",
   price_per_day: 1500
@@ -54,10 +54,10 @@ board1.save
 board2 = Board.new(
     location: "St-Brieuc",
     description: "for advanced surfers",
-    title: "Performance board quad fin setup",
-    height: 185,
+    title: "Performance board quad/tri fin setup",
+    height: 5.9,
     volume: 3555,
-    brand: "Firewire",
+    brand: "Slater Design",
     condition: "Almost new",
     price_per_day: 3200
   )
@@ -68,10 +68,10 @@ board2.save
 board3 = Board.new(
     location: "St-Brieuc",
     description: "for advanced surfers",
-    title: "Soft top for intermediate",
-    height: 84,
-    volume: 32.22,
-    brand: "Firewire",
+    title: "Epoxy for intermediate",
+    height: 6.3,
+    volume: 3222,
+    brand: "Torq",
     condition: "Almost new",
     price_per_day: 2500
   )
@@ -82,10 +82,10 @@ board3.save
 board4 = Board.new(
     location: "Paris",
     description: "for advanced surfers",
-    title: "Fish setup for small waves",
-    height: 165,
-    volume: 34.44,
-    brand: "DHD",
+    title: "Groveller setup for small waves",
+    height: 5.10,
+    volume: 3444,
+    brand: "Lost",
     condition: "very used",
     price_per_day: 2300
   )
@@ -95,10 +95,10 @@ board4.save
 
 board5 = Board.new(
     location: "Dinan",
-    description: "Has some dings but dont mind if you go crazy",
-    title: "Mid range 5'10\" ",
-    height: (5 * 10 + 10),
-    volume: 35.55,
+    description: "For intermediate, has some dings but dont mind if you go crazy",
+    title: "Mid length",
+    height: 7.5,
+    volume: 3555,
     brand: "Firewire",
     condition: "Almost new",
     price_per_day: 2100
@@ -111,8 +111,8 @@ board6 = Board.new(
     location: "St-Brieuc",
     description: "for advanced surfers",
     title: "Firewire 6'0\" ",
-    height: 185,
-    volume: 28.87,
+    height: 6.0,
+    volume: 2887,
     brand: "Firewire",
     condition: "ok",
     price_per_day: 2200
@@ -124,10 +124,10 @@ board6.save
 board7 = Board.new(
     location: "Rennes",
     description: "for advanced surfers",
-    title: "DHD 6'8\" board ",
-    height: (6 * 8 + 8),
-    volume: 36.55,
-    brand: "Firewire",
+    title: "NSP 6'8\" board ",
+    height: 6.8,
+    volume: 3655,
+    brand: "NSP",
     condition: "Almost new",
     price_per_day: 2900
   )
@@ -137,11 +137,11 @@ board7.save
 
 board8 = Board.new(
     location: "St-Brieuc",
-    description: "nice groovy board for beginners",
-    title: "Longboard 10'0\" ",
-    height: 120,
-    volume: 45.55,
-    brand: "Clayton",
+    description: "nice board for big wave chargers",
+    title: "Gun 8'0\" ",
+    height: 8.0,
+    volume: 4555,
+    brand: "Hayden Shapes",
     condition: "new",
     price_per_day: 3300
   )
@@ -152,10 +152,10 @@ board8.save
 board9 = Board.new(
     location: "Laval",
     description: "not too shabby",
-    title: "Lost board 7'6\"",
-    height: (7 * 12 + 6),
-    volume: 35.55,
-    brand: "Firewire",
+    title: "Hayden Shapes board 7'6\"",
+    height: 7.6,
+    volume: 3555,
+    brand: "Hayden Shapes",
     condition: "Almost new",
     price_per_day: 2500
   )
@@ -167,9 +167,9 @@ board10 = Board.new(
     location: "Quiberon",
     description: "Easy for any type of day",
     title: "Soft top 4' 10\"",
-    height: (4*12 + 10),
-    volume: 39.55,
-    brand: "Channel Islands",
+    height: 4.10,
+    volume: 2400,
+    brand: "Odysea",
     condition: "Almost new",
     price_per_day: 3500
   )
