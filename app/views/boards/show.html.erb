@@ -4,7 +4,7 @@
     </div>
   <div class="row">
     <div class="col text-center m-2" >
-      <%= cl_image_tag @board.photo.key, alt: "Picture of the board", height:400, class:"rounded m-2 p-3 rounded" ,style:"border-radius:4px" %>
+      <%#= cl_image_tag @board.photo.key, alt: "Picture of the board", height:400, class:"rounded m-2 p-3 rounded" ,style:"border-radius:4px" %>
     </div>
 
     <div class="col text-center m-4 rounded">
@@ -21,7 +21,7 @@
             <tr>
               <th scope="col">
                 <% if @board.user.photo.attached? %>
-                  <%= cl_image_tag @board.user.photo.key, class: "avatar" %>
+                  <%#= cl_image_tag @board.user.photo.key, class: "avatar" %>
                 <% else %>
                   <%= image_tag "default_avatar.png", class: "avatar" %>
                 <% end %>
@@ -59,7 +59,7 @@
 
   <div class="d-flex justify-content-center ">
 
-    <div class="col m-2 p-8 text-left ">
+    <div class="col m-2 mb-3 p-8 text-left ">
 
       <%= render "rentals/form", rental: rentals_url %>
       <%#<%= link_to "Rent it!", new_board_rental_path(@board), class:"btn btn-lg btn-danger justify-content-self rounded" %>

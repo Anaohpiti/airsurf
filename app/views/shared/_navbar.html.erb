@@ -23,7 +23,7 @@
           <%# <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
 
           <% if current_user.photo.attached? %>
-            <%= cl_image_tag current_user.photo.key, class: "avatar" %>
+            <%#= cl_image_tag current_user.photo.key, class: "avatar" %>
           <% else %>
             <%= image_tag "default_avatar.png", class: "avatar" %>
           <% end %>

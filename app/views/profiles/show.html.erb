@@ -9,7 +9,7 @@
     </div>
     <div class="">
       <% if @profile.photo.attached? %>
-        <%= cl_image_tag @profile.photo.key, class: "avatar-profile" %>
+        <%#= cl_image_tag @profile.photo.key, class: "avatar-profile" %>
       <% else %>
         <%= image_tag "default_avatar.png", class: "avatar-profile" %>
       <% end %>
@@ -42,7 +42,7 @@
                 <p class="m-1"> <i class="far fa-calendar-plus"></i>   <%=rental.start_date.strftime("%a %d %b %Y")%> - <%= rental.end_date.strftime("%a %d %b %Y")%></p>
                 <p class="m-1"> <i class="fas fa-tag"></i> <%= rental.total_price%> <strong>€</strong></p>
               </div>
-              <%= cl_image_tag(rental.board.photo.key, class: "board-image ml-auto") %>
+              <%#= cl_image_tag(rental.board.photo.key, class: "board-image ml-auto") %>
             </div>
           </div>
         <% end %>
@@ -51,31 +51,10 @@
     </div>
     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
       <div class="d-flex mt-3 ml-0 mb-0 justify-content-between">
-        <h2 class=" ml-3 mb-0 text-white text-bottom "> My Boards</h2>
+
         <%= link_to "Add Board", new_board_path, class: "btn border-white text-white mb-2 mr-3" %>
       </div>
-      <div class="profile-boards-grid rounded">
-        <% if @profile.boards.empty? %>
-          <p class="text-muted font-italic mt-0 mb-3">You have no boards</p>
-        <% end %>
-        <div class="profile-boards-grid rounded">
-          <% @profile.boards.each do |board| %>
-          <div class="card card-boards my-4" style="width: 20rem;">
-          <%=  link_to board_path(board), class: "text-decoration-none text-dark" do %>
-            <%= cl_image_tag board.photo.key, height: 350, crop: :thumb, class: "card-img-top" %>
-            <div class="card-body white-card-body text-center d-flex flex-column">
-              <h3 class="card-title "><%= board.title %></h3>
-              <div class="mt-auto interline-card-content">
-                <p class="card-text"></p>
-
-              </div>
-            </div>
-            <% end %>
-          </div>
-          <% end %>
-        </div>
-      </div>
-      <h2 class="text-white mt-3 ml-3 mb-0">People Renting from <%= @profile.name.capitalize %></h2>
+            <h2 class="text-white mt-3 mb-0">People Renting from <%= @profile.name.capitalize %></h2>
       <div class="container px-3 mb-3 py-1 ">
         <% if @profile.boards.empty? %>
           <p class="text-white font-italic mt-0 mb-3">You have no boards to rent</p>
@@ -97,7 +76,7 @@
                 </div>
                 <div class="text-center px-3 border-right border-left">
                   <h5 class="font-weight-bold mb-2">Renter</h5>
-                  <%= cl_image_tag(rental.user.photo.key, class: "avatar ") %>
+                  <%#= cl_image_tag(rental.user.photo.key, class: "avatar ") %>
                   <p> <%= rental.user.name.capitalize %> </p>
                 </div>
                 <div class="ml-3">
@@ -105,12 +84,35 @@
                   <p class="m-1"> <i class="far fa-calendar-plus"></i>   <%=rental.start_date.strftime("%a %d %b %Y")%> - <%= rental.end_date.strftime("%a %d %b %Y")%></p>
                   <p class="m-1"> <i class="fas fa-tag"></i> <%= rental.total_price%> <strong>€</strong></p>
                 </div>
-                <%= cl_image_tag(rental.board.photo.key, class: "board-image ml-auto") %>
+                <%#= cl_image_tag(rental.board.photo.key, class: "board-image ml-auto") %>
               </div>
             </div>
           <% end %>
         <% end %>
       </div>
+      <h2 class=" ml-3 mb-0 text-white text-bottom "> My Boards</h2>
+      <div class="profile-boards-grid rounded">
+        <% if @profile.boards.empty? %>
+          <p class="text-muted font-italic mt-0 mb-3">You have no boards</p>
+        <% end %>
+        <div class="profile-boards-grid rounded">
+          <% @profile.boards.each do |board| %>
+          <div class="card card-boards my-4" style="width: 20rem;">
+          <%=  link_to board_path(board), class: "text-decoration-none text-dark" do %>
+            <%#= cl_image_tag board.photo.key, height: 350, crop: :thumb, class: "card-img-top" %>
+            <div class="card-body white-card-body text-center d-flex flex-column">
+              <h3 class="card-title "><%= board.title %></h3>
+              <div class="mt-auto interline-card-content">
+                <p class="card-text"></p>
+
+              </div>
+            </div>
+            <% end %>
+          </div>
+          <% end %>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
