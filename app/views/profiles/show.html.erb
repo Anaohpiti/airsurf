@@ -9,7 +9,7 @@
     </div>
     <div class="">
       <% if @profile.photo.attached? %>
-        <%#= cl_image_tag @profile.photo.key, class: "avatar-profile" %>
+        <%= cl_image_tag @profile.photo.key, class: "avatar-profile" %>
       <% else %>
         <%= image_tag "default_avatar.png", class: "avatar-profile" %>
       <% end %>
@@ -42,7 +42,7 @@
                 <p class="m-1"> <i class="far fa-calendar-plus"></i>   <%=rental.start_date.strftime("%a %d %b %Y")%> - <%= rental.end_date.strftime("%a %d %b %Y")%></p>
                 <p class="m-1"> <i class="fas fa-tag"></i> <%= rental.total_price%> <strong>€</strong></p>
               </div>
-              <%#= cl_image_tag(rental.board.photo.key, class: "board-image ml-auto") %>
+              <%= cl_image_tag(rental.board.photo.key, class: "board-image ml-auto") %>
             </div>
           </div>
         <% end %>
@@ -76,7 +76,7 @@
                 </div>
                 <div class="text-center px-3 border-right border-left">
                   <h5 class="font-weight-bold mb-2">Renter</h5>
-                  <%#= cl_image_tag(rental.user.photo.key, class: "avatar ") %>
+                  <%= cl_image_tag(rental.user.photo.key, class: "avatar ") %>
                   <p> <%= rental.user.name.capitalize %> </p>
                 </div>
                 <div class="ml-3">
@@ -84,7 +84,7 @@
                   <p class="m-1"> <i class="far fa-calendar-plus"></i>   <%=rental.start_date.strftime("%a %d %b %Y")%> - <%= rental.end_date.strftime("%a %d %b %Y")%></p>
                   <p class="m-1"> <i class="fas fa-tag"></i> <%= rental.total_price%> <strong>€</strong></p>
                 </div>
-                <%#= cl_image_tag(rental.board.photo.key, class: "board-image ml-auto") %>
+                <%= cl_image_tag(rental.board.photo.key, class: "board-image ml-auto") %>
               </div>
             </div>
           <% end %>
@@ -99,7 +99,7 @@
           <% @profile.boards.each do |board| %>
           <div class="card card-boards my-4" style="width: 20rem;">
           <%=  link_to board_path(board), class: "text-decoration-none text-dark" do %>
-            <%#= cl_image_tag board.photo.key, height: 350, crop: :thumb, class: "card-img-top" %>
+            <%= cl_image_tag board.photo.key, height: 350, crop: :thumb, class: "card-img-top" %>
             <div class="card-body white-card-body text-center d-flex flex-column">
               <h3 class="card-title "><%= board.title %></h3>
               <div class="mt-auto interline-card-content">

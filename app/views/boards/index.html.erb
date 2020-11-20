@@ -13,7 +13,7 @@
       <% @boards.each do |board| %>
         <div class="card card-boards my-4" style="width: 20rem;">
       <%=  link_to board_path(board), class: "text-decoration-none text-dark" do %>
-        <%#= cl_image_tag board.photo.key, height: 350, crop: :thumb, class: "card-img-top" %>
+        <%= cl_image_tag board.photo.key, height: 350, crop: :thumb, class: "card-img-top" %>
         <div class="card-body white-card-body text-center d-flex flex-column">
           <h3 class="card-title "><%= board.title %></h3>
           <div class="mt-auto interline-card-content">
